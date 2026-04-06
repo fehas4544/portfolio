@@ -543,7 +543,7 @@
                     <a href="#projects" class="btn-primary" id="hero-view-projects-btn">
                         <i class="fa-solid fa-rocket"></i> View Projects
                     </a>
-                    <a href="{{ ($profile && $profile->cv_path) ? asset('storage/' . $profile->cv_path) : '#' }}" 
+                    <a href="{{ ($profile && $profile->cv_path) ? asset($profile->cv_path) : '#' }}" 
                        class="btn-outline" 
                        id="hero-download-cv-btn"
                        target="_blank"
@@ -586,7 +586,7 @@
                         <div class="ring-glow2"></div>
                         <div class="ring-inner"></div>
                         <div class="grid-overlay"></div>
-                        <img src="{{ ($profile && $profile->image) ? asset('storage/'.$profile->image) : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600' }}"
+                        <img src="{{ ($profile && $profile->image) ? asset($profile->image) : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600' }}"
                              alt="{{ $profile->name ?? 'Developer' }} profile photo">
                     </div>
                     <div class="hero-stats">
@@ -614,7 +614,7 @@
             </div>
             <div class="about-grid">
                 <div class="about-img glass card-lift reveal-left">
-                    <img src="{{ ($profile && $profile->about_image) ? asset('storage/'.$profile->about_image) : (($profile && $profile->image) ? asset('storage/'.$profile->image) : 'https://images.unsplash.com/photo-1542831371-159c77c040fe?auto=format&fit=crop&q=80&w=800') }}"
+                    <img src="{{ ($profile && $profile->about_image) ? asset($profile->about_image) : (($profile && $profile->image) ? asset($profile->image) : 'https://images.unsplash.com/photo-1542831371-159c77c040fe?auto=format&fit=crop&q=80&w=800') }}"
                          alt="About {{ $profile->name ?? 'Developer' }}">
                 </div>
                 <div class="about-content reveal-right">
@@ -727,7 +727,7 @@
                 @forelse ($projects as $project)
                 <article class="project-card glass reveal" id="project-card-{{ $project->id }}">
                     <div class="project-img">
-                        <img src="{{ $project->image ? asset('storage/'.$project->image) : 'https://picsum.photos/seed/'.$project->id.'/800/500' }}"
+                        <img src="{{ $project->image ? asset($project->image) : 'https://picsum.photos/seed/'.$project->id.'/800/500' }}"
                              alt="{{ $project->title }}" loading="lazy">
                         <div class="project-tag">{{ $project->category ?? 'Web' }}</div>
                         <div class="project-overlay">
@@ -840,27 +840,10 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    @if(session('success'))
-                    <div class="form-success">
-                        <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-                    </div>
-                    @endif
-                    <form action="{{ route('contact.store') }}" method="POST" id="contact-form">
-                        @csrf
-                        <div class="field row">
-                            <input type="text" name="name" id="contact-name" required placeholder="Your Name" value="{{ old('name') }}">
-                            <input type="email" name="email" id="contact-email" required placeholder="Your Email" value="{{ old('email') }}">
-                        </div>
-                        <div class="field">
-                            <input type="text" name="subject" id="contact-subject" placeholder="Subject" value="{{ old('subject') }}">
-                        </div>
-                        <div class="field">
-                            <textarea name="message" id="contact-message" required rows="5" placeholder="Your Message">{{ old('message') }}</textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" id="contact-submit-btn">
-                            <i class="fa-solid fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
+                    <a href="mailto:smfehas@gmail.com?subject=Portfolio%20Inquiry" class="btn-primary" style="width:100%;justify-content:center;display:inline-flex;" id="contact-email-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send me an Email
+                    </a>
+                    <p style="margin-top:16px;font-size:.85rem;color:var(--c-muted);text-align:center;">Or reach out directly at <a href="mailto:smfehas@gmail.com" style="color:var(--c-accent);">smfehas@gmail.com</a></p>
                 </div>
             </div>
         </div>
