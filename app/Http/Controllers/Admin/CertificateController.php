@@ -30,7 +30,7 @@ class CertificateController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('certificates', 'public');
+            $validated['image'] = $request->file('image')->store('uploads/certificates', 'public_folder');
         }
 
         Certificate::create($validated);
@@ -53,7 +53,7 @@ class CertificateController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('certificates', 'public');
+            $validated['image'] = $request->file('image')->store('uploads/certificates', 'public_folder');
         }
 
         $certificate->update($validated);

@@ -59,15 +59,15 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('profile', 'public');
+            $validated['image'] = $request->file('image')->store('uploads/profile', 'public_folder');
         }
 
         if ($request->hasFile('about_image')) {
-            $validated['about_image'] = $request->file('about_image')->store('profile', 'public');
+            $validated['about_image'] = $request->file('about_image')->store('uploads/profile', 'public_folder');
         }
 
         if ($request->hasFile('cv_path')) {
-            $validated['cv_path'] = $request->file('cv_path')->store('cv', 'public');
+            $validated['cv_path'] = $request->file('cv_path')->store('uploads/cv', 'public_folder');
         }
 
         $profile->fill($validated)->save();
