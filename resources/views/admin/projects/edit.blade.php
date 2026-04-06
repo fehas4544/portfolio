@@ -65,7 +65,7 @@
                 <label class="text-sm font-bold text-slate-700">Project Image</label>
                 @if($project->image)
                 <div class="mb-2">
-                    <img src="{{ asset('storage/' . $project->image) }}" class="h-20 w-32 object-cover rounded-lg">
+                    <img src="{{ asset($project->image) }}" class="h-20 w-32 object-cover rounded-lg">
                 </div>
                 @endif
                 <input type="file" name="image" 
